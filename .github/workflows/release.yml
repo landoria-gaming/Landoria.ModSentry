@@ -5,7 +5,7 @@ permissions:
   contents: read
 jobs:
   package:
-    uses: landoria-gaming/LandoriaModActions/.github/workflows/release.yml@v4.4
+    uses: landoria-gaming/LandoriaModActions/.github/workflows/release.yml@v4.5
     with:
       project-file: Landoria.ModSentry.csproj
       mod-name: Landoria.ModSentry
