@@ -1,0 +1,26 @@
+name: Snapshot build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: snapshot-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  snapshot:
+    permissions:
+      contents: write
+    uses: landoria-gaming/LandoriaModActions/.github/workflows/snapshot.yml@v4.3
+    with:
+      project-file: Landoria.ModSentry.csproj
+      mod-name: Landoria.ModSentry
+      package-name: ModSentry
+    secrets:
+      references-token: ${{ secrets.MOD_REFERENCES_TOKEN }}
