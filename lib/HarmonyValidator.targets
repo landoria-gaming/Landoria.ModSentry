@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <HarmonyValidatorAssembly Condition="'$(HarmonyValidatorAssembly)' == ''">$(MSBuildThisFileDirectory)HarmonyValidator.dll</HarmonyValidatorAssembly>
+  </PropertyGroup>
+  <UsingTask TaskName="Landoria.Build.HarmonyValidatorTask"
+             AssemblyFile="$(HarmonyValidatorAssembly)" />
+  <Target Name="ValidateHarmonyTargets"
+          AfterTargets="CoreCompile"
+          BeforeTargets="CopyFilesToOutputDirectory"
+          Condition="'$(DesignTimeBuild)' != 'true'">
+    <Error Condition="!Exists('$(HarmonyValidatorAssembly)')"
+           Text="HarmonyValidator assembly not found: $(HarmonyValidatorAssembly)." />
+    <PropertyGroup>
+      <_HvAssembly>@(IntermediateAssembly->'%(FullPath)')</_HvAssembly>
+    </PropertyGroup>
+    <HarmonyValidatorTask AssemblyPath="$(_HvAssembly)"
+                          References="@(ReferencePath)" />
+  </Target>
+</Project>
