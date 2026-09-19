@@ -42,5 +42,4 @@
     <Content Include="README.md" /><Content Include="CHANGELOG.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="build\Thunderstore.targets" />
 </Project>

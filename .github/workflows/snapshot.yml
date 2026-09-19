@@ -17,7 +17,7 @@ jobs:
   snapshot:
     permissions:
       contents: write
-    uses: landoria-gaming/LandoriaModActions/.github/workflows/snapshot.yml@v4.5
+    uses: landoria-gaming/LandoriaModActions/.github/workflows/snapshot.yml@v4.8
     with:
       project-file: Landoria.ModSentry.csproj
       mod-name: Landoria.ModSentry
