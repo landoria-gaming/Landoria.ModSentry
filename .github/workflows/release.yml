@@ -1,13 +1,22 @@
 name: Release package
 on:
   workflow_dispatch:
+    inputs:
+      promote-to-thunderstore:
+        description: Promote the package to Thunderstore
+        required: false
+        default: false
+        type: boolean
 permissions:
   contents: read
 jobs:
   package:
-    uses: landoria-gaming/LandoriaModActions/.github/workflows/release.yml@v4.5
+    uses: landoria-gaming/LandoriaModActions/.github/workflows/release.yml@v4.6
     with:
       project-file: Landoria.ModSentry.csproj
       mod-name: Landoria.ModSentry
+      package-namespace: Landoria
+      promote-to-thunderstore: ${{ inputs['promote-to-thunderstore'] }}
     secrets:
       references-token: ${{ secrets.MOD_REFERENCES_TOKEN }}
+      thunderstore-token: ${{ secrets.THUNDERSTORE_TOKEN }}
