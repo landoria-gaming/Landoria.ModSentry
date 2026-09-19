@@ -1,7 +1,5 @@
 # Landoria ModSentry
 
-Requires MOD_REFERENCES_TOKEN. All five versions must match; only manifest and informational version use -snapshot.
-
 ModSentry verifies that the mods installed on each client match the mods expected
 by the server. This lets every player use the same mods and play under the same
 conditions.
