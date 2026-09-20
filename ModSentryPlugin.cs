@@ -23,36 +23,12 @@ namespace Landoria.ModSentry
 
         private Harmony _harmony;
 
-        private void RegisterPatches0()
-        {
-            _harmony.CreateClassProcessor(typeof(RegisterHandshakePatch)).Patch();
-            _harmony.CreateClassProcessor(typeof(SendInventoryPatch)).Patch();
-            _harmony.CreateClassProcessor(typeof(ValidatePeerPatch)).Patch();
-            _harmony.CreateClassProcessor(typeof(RestoreServerAdmissionMarkersPatch)).Patch();
-            _harmony.CreateClassProcessor(typeof(ClearHandshakePatch)).Patch();
-        }
-
-        private static void EnsureConnectionFailurePatch()
-        {
-            // Install the menu integration once, including alongside older mods.
-            const string key = "Landoria.SharedLib.ConnectionFailureMenuPatch.v1";
-            lock (System.AppDomain.CurrentDomain)
-            {
-                if (System.AppDomain.CurrentDomain.GetData(key) != null) return;
-                new Harmony("Landoria.ConnectionFailureMessages")
-                    .CreateClassProcessor(typeof(ConnectionFailureMenuPatch)).Patch();
-                System.AppDomain.CurrentDomain.SetData(key, true);
-            }
-        }
-
         private void Awake()
         {
             Log = Logger;
             Logger.LogInfo($"AssemblyVersion: {GetType().Assembly.GetName().Version}.");
             _harmony = new Harmony(PluginGuid);
-            EnsureConnectionFailurePatch();
-            RegisterPatches0();
-            EnsureConnectionFailurePatch();
+            _harmony.PatchAll();
             PluginPolicyLoader.EnsureDirectories();
             Log.LogInfo($"{PluginName} {PluginVersion} is loaded.");
         }
