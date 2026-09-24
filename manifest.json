@@ -4,7 +4,7 @@
   "website_url": "https://github.com/landoria-gaming/Landoria.ModSentry",
   "description": "Validates required and optional client mods before joining a Valheim server.",
   "dependencies": [
-    "denikson-BepInExPack_Valheim-5.4.2350"
+    "denikson-BepInExPack_Valheim-5.4.2351"
   ],
   "categories": [
     "deep-north-update",
