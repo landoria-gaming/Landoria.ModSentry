@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.20
+
+- Use latest BepInEx version 5.4.2351
+
 ## 1.0.19
 
 - Automatically create the ModSentry_Required and ModSentry_Optional folders at startup.
