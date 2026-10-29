@@ -14,7 +14,7 @@ namespace Landoria.ModSentry
         internal const int ProtocolVersion = 2;
         private const string PluginGuid = "Landoria.ModSentry";
         private const string PluginName = "Landoria.ModSentry";
-        private const string PluginVersion = "1.0.20";
+        private const string PluginVersion = "1.0.21";
 
         internal static ManualLogSource Log { get; private set; }
         internal static PluginPolicy Policy { get; private set; }
